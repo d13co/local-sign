@@ -1,8 +1,29 @@
-# React + Vite
+# Local signer for Algorand tranasctions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Allows signing arbitrary raw transactions via Pera/Defly
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install dependencies with:
+
+```
+pnpm i
+```
+
+In a pickle, `npm i` should also work
+
+## Run
+
+Run with 
+
+```
+npm run dev
+```
+
+## Use
+
+- Visit http://localhost:5173/ 
+- Connect Pera or Defly
+- Paste Base64 encoded unsigned txn
+- Sign
+- Profit: get signed base64 encoded txn
