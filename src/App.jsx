@@ -88,6 +88,8 @@ function App() {
 
   const sign = () => {
     (async() => {
+      if (!txn.genesisID)
+        txn.genesisID  = "mainnet-v1.0"
       const signed = await signTransactions([
         algosdk.encodeUnsignedTransaction(txn)
       ]);
@@ -116,7 +118,7 @@ function App() {
     let txn;
     console.log("Eff");
     try {
-      txn = algosdk.Transaction.from_obj_for_encoding(decode(parsed.slice(2)));
+      txn = algosdk.Transaction.from_obj_for_encoding(decode(parsed).txn);
       setTxn(txn);
       setSigned('');
     } catch(e) {
@@ -168,9 +170,8 @@ function presentTxn(txn) {
       out[field] = bufferToAddr(out[field])
     }
   }
-  out.gh = out.gh.toString("base64");
-  out.lx = out.lx.toString("base64");
-  out.note = out.note.toString();
+  out.gh = out.gh?.toString("base64");
+  out.note = out.note?.toString();
   return JSON.stringify(out);
 }
 
